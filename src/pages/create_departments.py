@@ -1,10 +1,14 @@
 import flet as ft
 
+from components.genericButton import genericButton 
+from components.genericTextField import genericTextField
+from components.info_fields import info_fields
+
 from database.operations import create_department, consult_manager
 
 managers_infos = consult_manager()
 
-def create_departments(page: ft.Page):
+def create_departments_view(page: ft.Page):
     
     def manager_options():
         if managers_infos:
@@ -15,12 +19,13 @@ def create_departments(page: ft.Page):
     def on_click():
         create_department(title.value, manager.value)
 
-    title = ft.TextField(label="Dapartment Name")
+    title = genericTextField(label="Dapartment Name")
     manager = ft.Dropdown(label="Department Manager", options=manager_options())
-    create_button = ft.Button("Create New Department", on_click=on_click)
-    create_departments = ft.Column(
-        controls=[
-            title, manager, create_button
-        ]
-    )
+    create_button = genericButton("Create New Department", on_click=on_click)
+
+    create_departments = info_fields([
+                title, manager, create_button
+            ], 2
+        )
+
     return create_departments

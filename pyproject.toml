@@ -1,7 +1,7 @@
 [project]
-name = "staff-manager"
+name = "employee-manager"
 version = "0.1.0"
-description = "Add your description here"
+description = "A Human Resources (HR) management system designed to streamline employee registration and role organization. This project focuses on integrating relational databases with a modern UI to manage organizational data efficiently."
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [

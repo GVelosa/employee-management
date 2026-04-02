@@ -1,12 +1,15 @@
 import flet as ft
 
+from components.appbar import appbar_create
+
 from pages.signup import signup_view
 from pages.login import login_view
 from pages.home import home_view
 from pages.register_employees import create_employee_view
 from pages.create_job_title import create_job_title_view
 from pages.overview import overview_view
-from pages.create_departments import create_departments
+from pages.create_departments import create_departments_view
+from pages.update_infos import update_page_view
 from database.db import init_db
 from theme import colors
 
@@ -41,6 +44,8 @@ def main(page: ft.Page):
         if page.route == "/home":
             page.views.append(
                 ft.View(
+                    appbar=appbar_create(page),
+                    vertical_alignment=ft.MainAxisAlignment.CENTER,
                     route="/home",
                     bgcolor=colors.WHITE,
                     controls=[
@@ -51,6 +56,9 @@ def main(page: ft.Page):
         if page.route == "/create_employee":
             page.views.append(
                 ft.View(
+                    appbar= appbar_create(page),
+                    vertical_alignment=ft.MainAxisAlignment.CENTER,
+                    horizontal_alignment=ft.CrossAxisAlignment.CENTER,
                     route="/create_employee",
                     bgcolor=colors.WHITE,
                     controls=[
@@ -61,6 +69,7 @@ def main(page: ft.Page):
         if page.route == "/overview":
             page.views.append(
                 ft.View(
+                    appbar= appbar_create(page),
                     route="/overview",
                     bgcolor=colors.WHITE,
                     controls=[
@@ -72,10 +81,13 @@ def main(page: ft.Page):
         if page.route == "/create_departments":
             page.views.append(
                 ft.View(
+                    appbar= appbar_create(page),
+                    vertical_alignment=ft.MainAxisAlignment.CENTER,
+                    horizontal_alignment=ft.CrossAxisAlignment.CENTER,
                     route="/create_departments",
                     bgcolor=colors.WHITE,
                     controls=[
-                        create_departments(page)
+                        create_departments_view(page)
                     ],
                 )
             )
@@ -83,10 +95,22 @@ def main(page: ft.Page):
         if page.route == "/create_job_title":
             page.views.append(
                 ft.View(
+                    appbar= appbar_create(page),
                     route="/create_job_title",
                     bgcolor=colors.WHITE,
                     controls=[
                         create_job_title_view(page)
+                    ],
+                )
+            )
+        if page.route == "/update_infos":
+            page.views.append(
+                ft.View(
+                    appbar= appbar_create(page),
+                    route="/create_job_title",
+                    bgcolor=colors.WHITE,
+                    controls=[
+                        update_page_view(page)
                     ],
                 )
             )

@@ -2,6 +2,7 @@ import flet as ft
 
 from components.genericButton import genericButton 
 from components.genericTextField import genericTextField
+from components.info_fields import info_fields
 
 from database.operations import consute_user
 
@@ -34,23 +35,16 @@ def login_view(page: ft.Page):
     login_button = genericButton("Login", login_call)
     signup_button = genericButton("Don't have an acconut?", to_signup)
     confirm_text = ft.Text(value="", color=ft.Colors.RED)
-    
-    login_page = ft.Container(
-        border_radius=10,
-        padding=16,
-        bgcolor=colors.TANZINE,
-        content=ft.Column(
-            horizontal_alignment=ft.CrossAxisAlignment.CENTER,
-            controls=[
-                user_login, user_pass,
-                ft.Row(
+    buttons = ft.Row(
                     alignment = ft.MainAxisAlignment.CENTER, 
                     controls=[
                         login_button, signup_button
                     ]
-                ), confirm_text
+                )
+    
+    login_page = info_fields([
+                user_login, user_pass, buttons, confirm_text
             ]
-        )
-    )
+        , 1)
     
     return login_page

@@ -2,6 +2,10 @@ import flet as ft
 import random
 from datetime import datetime
 
+from components.genericButton import genericButton 
+from components.genericTextField import genericTextField
+from components.info_fields import info_fields
+
 from database.operations import consult_job_title,create_employee, consult_department
 
 jobs_titles = consult_job_title()
@@ -38,22 +42,21 @@ def create_employee_view(page: ft.Page):
             datetime.now().isoformat()
         )
 
-    employee_name = ft.TextField(label="Name")
-    # employee_code = ft.TextField(label="Employee Code")
+    employee_name = genericTextField(label="Name")
+    # employee_code = genericTextField(label="Employee Code")
     job_title_id = ft.Dropdown(label="Job Title", options=job_title_options())
     department_id = ft.Dropdown(label="Department", options=department_options())
     is_manager = ft.Switch(label="Is Manager?")
-    # manager_id = ft.TextField(label="Manager ID (optional)")
-    salary = ft.TextField(label="Salary")
-    # hire_date = ft.TextField(label="Hire Date (YYYY-MM-DD)")
-    performance_score = ft.TextField(label="Performance Score (optional)")
-    # status = ft.TextField(label="Employee Status")
-    employment_type = ft.TextField(label="Employment Type")
+    # manager_id = genericTextField(label="Manager ID (optional)")
+    salary = genericTextField(label="Salary")
+    # hire_date = genericTextField(label="Hire Date (YYYY-MM-DD)")
+    performance_score = genericTextField(label="Performance Score (optional)")
+    # status = genericTextField(label="Employee Status")
+    employment_type = genericTextField(label="Employment Type")
 
-    create_button = ft.ElevatedButton("Create Employee", on_click=create)
+    create_button = genericButton("Create Employee", on_click=create)
 
-    create_employee_view = ft.Column(
-        controls=[
+    create_employee_view = info_fields([
             employee_name,
             job_title_id,
             department_id,
@@ -64,7 +67,7 @@ def create_employee_view(page: ft.Page):
             # status,
             employment_type,
             create_button
-        ]
+        ], 1
     )
 
     return create_employee_view

@@ -2,6 +2,7 @@ import flet as ft
 
 from components.genericButton import genericButton 
 from components.genericTextField import genericTextField
+from components.info_fields import info_fields
 
 from database.operations import create_user
 
@@ -55,11 +56,9 @@ def signup_view(page: ft.Page):
                     ]
                 )
 
-    signup_page = ft.Column(
-        horizontal_alignment = ft.CrossAxisAlignment.CENTER,
-            controls=[
-                user_name, user_email, user_pass, confirm_pass, buttons_row, confirm_text
-            ]
+    signup_page = info_fields([
+                    user_name, user_email, user_pass, confirm_pass, buttons_row, confirm_text
+                ], 1
         )
     
     
