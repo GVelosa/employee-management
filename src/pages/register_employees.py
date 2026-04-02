@@ -8,11 +8,10 @@ from components.info_fields import info_fields
 
 from database.operations import consult_job_title,create_employee, consult_department
 
-jobs_titles = consult_job_title()
-departmet = consult_department()
-
 def create_employee_view(page: ft.Page):
-
+    jobs_titles = consult_job_title()
+    departmet = consult_department()
+    
     def job_title_options():
         if jobs_titles:
             return [ft.DropdownOption(key=id, text=title) for id, title in jobs_titles]

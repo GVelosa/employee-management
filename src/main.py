@@ -13,8 +13,6 @@ from pages.update_infos import update_page_view
 from database.db import init_db
 from theme import colors
 
-init_db()
-
 def main(page: ft.Page):
     page.title = "Staff Manager"
     
@@ -130,4 +128,5 @@ def main(page: ft.Page):
     route_change()
 
 if __name__ == "__main__":
+    init_db()
     ft.run(main)

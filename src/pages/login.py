@@ -6,12 +6,8 @@ from components.info_fields import info_fields
 
 from database.operations import consute_user
 
-from theme import colors
-
-users_account = consute_user()
-
 def login_view(page: ft.Page):
-
+    users_account = consute_user()
     async def login_call():
         for conta in users_account:
             id, username, user_email, password = conta

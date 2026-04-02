@@ -6,9 +6,8 @@ from components.info_fields import info_fields
 
 from database.operations import create_department, consult_manager
 
-managers_infos = consult_manager()
-
 def create_departments_view(page: ft.Page):
+    managers_infos = consult_manager()
     
     def manager_options():
         if managers_infos:
